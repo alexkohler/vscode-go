@@ -165,16 +165,20 @@ export class GoCompletionItemProvider implements vscode.CompletionItemProvider {
 								);
 							}
 							let conf = vscode.workspace.getConfiguration('go', vscode.window.activeTextEditor ? vscode.window.activeTextEditor.document.uri : null);
-							if (conf.get('useCodeSnippetsOnFunctionSuggest') && suggest.class === 'func') {
+							if ((conf.get('useCodeSnippetsOnFunctionSuggestWithoutType') || conf.get('useCodeSnippetsOnFunctionSuggest')) && suggest.class === 'func') {
 								let params = parameters(suggest.type.substring(4));
 								let paramSnippets = [];
 								for (let i = 0; i < params.length; i++) {
 									let param = params[i].trim();
 									if (param) {
 										param = param.replace('${', '\\${').replace('}', '\\}');
+										if (conf.get('useCodeSnippetsOnFunctionSuggestWithoutType')) {
+											param = param.substr(0, param.indexOf(" "));	
+										}
 										paramSnippets.push('${' + (i + 1) + ':' + param + '}');
 									}
 								}
+								//TODO split on paramSnippets afterward?
 								item.insertText = new vscode.SnippetString(suggest.name + '(' + paramSnippets.join(', ') + ')');
 							}
 
