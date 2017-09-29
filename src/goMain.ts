@@ -455,6 +455,7 @@ function sendTelemetryEventForConfig(goConfig: vscode.WorkspaceConfiguration) {
 		toolsGopath: goConfig['toolsGopath'] ? 'set' : '',
 		gocodeAutoBuild: goConfig['gocodeAutoBuild'] + '',
 		useCodeSnippetsOnFunctionSuggest: goConfig['useCodeSnippetsOnFunctionSuggest'] + '',
+		useCodeSnippetsOnFunctionSuggestv2: goConfig['useCodeSnippetsOnFunctionSuggestv2'] + '',
 		autocompleteUnimportedPackages: goConfig['autocompleteUnimportedPackages'] + '',
 		docsTool: goConfig['docsTool'],
 		useLanguageServer: goConfig['useLanguageServer'] + '',

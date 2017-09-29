@@ -588,6 +588,12 @@
           "description": "Complete functions with their parameter signature",
           "scope": "resource"
         },
+        "go.useCodeSnippetsOnFunctionSuggestv2": {
+          "type": "boolean",
+          "default": false,
+          "description": "Complete functions with only the default names of the parameters",
+          "scope": "resource"
+        },
         "go.autocompleteUnimportedPackages": {
           "type": "boolean",
           "default": false,
